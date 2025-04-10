@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>แชร์ Flex Message</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <h2>กำลังเตรียมแชร์ข้อความ...</h2>
+
+  <script>
+    const flexMessage = {
+      type: "flex",
+      altText: "📚 แชร์แนะนำการใช้งาน eLibrary",
+      contents: {
+        "type": "bubble",
+        "size": "giga",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "image",
+              "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/head5.png",
+              "aspectRatio": "7:1",
+              "align": "center",
+              "gravity": "center",
+              "aspectMode": "cover",
+              "animated": true,
+              "size": "full"
+            }
+          ],
+          "paddingAll": "none"
+        },
+        "hero": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/w1.png",
+                  "aspectRatio": "129:79",
+                  "aspectMode": "fit",
+                  "backgroundColor": "#b3baff",
+                  "animated": true,
+                  "size": "100%",
+                  "action": {
+                    "type": "uri",
+                    "label": "อ่านเลย",
+                    "uri": "https://elibrary-afapslib.cu-elibrary.com/"
+                  }
+                },
+                {
+                  "type": "image",
+                  "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/book1.png",
+                  "aspectRatio": "140:60",
+                  "aspectMode": "fit",
+                  "backgroundColor": "#b3baff",
+                  "animated": true,
+                  "size": "full",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/1-2.png"
+                  }
+                }
+              ],
+              "backgroundColor": "#b3baff",
+              "paddingAll": "none",
+              "borderColor": "#b3baff",
+              "borderWidth": "none"
+            }
+          ],
+          "backgroundColor": "#b3baff",
+          "borderWidth": "none",
+          "action": {
+            "type": "uri",
+            "label": "action",
+            "uri": "https://elibrary-afapslib.cu-elibrary.com/"
+          },
+          "maxHeight": "100%"
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/appstore.png",
+                  "size": "md",
+                  "animated": true,
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "https://apps.apple.com/th/app/cu-e-library/id1607050195?l=th"
+                  },
+                  "align": "center",
+                  "aspectRatio": "9:3"
+                },
+                { "type": "separator" },
+                {
+                  "type": "image",
+                  "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/manual.png",
+                  "size": "md",
+                  "animated": true,
+                  "aspectRatio": "9:3",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "https://youtu.be/4JAH4OQVOeo"
+                  },
+                  "align": "center"
+                },
+                { "type": "separator" },
+                {
+                  "type": "image",
+                  "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/googleplay.png",
+                  "size": "md",
+                  "animated": true,
+                  "aspectRatio": "9:3",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "https://play.google.com/store/apps/details?id=hti.cu.elibrary.android&pcampaignid=web_share"
+                  },
+                  "align": "center"
+                }
+              ],
+              "justifyContent": "center",
+              "offsetBottom": "xs"
+            }
+          ],
+          "background": {
+            "type": "linearGradient",
+            "startColor": "#5656c7",
+            "endColor": "#b3baff",
+            "angle": "0deg"
+          }
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "image",
+              "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/footer2.jpg",
+              "align": "center",
+              "gravity": "center",
+              "aspectMode": "cover",
+              "aspectRatio": "1080:50",
+              "action": {
+                "type": "uri",
+                "label": "แชร์อีกครั้ง",
+                "uri": "https://liff.line.me/2006390864-5gQqgRvw"
+              },
+              "size": "full"
+            }
+          ],
+          "paddingAll": "none"
+        }
+      }
+    };
+
+    // ใส่ LIFF ID ของคุณในนี้
+    const LIFF_ID = "YOUR_LIFF_ID";
+
+    liff.init({ liffId: LIFF_ID }).then(() => {
+      if (!liff.isLoggedIn()) {
+        liff.login();
+      } else {
+        liff.shareTargetPicker([flexMessage])
+          .then(() => {
+            alert("✅ แชร์สำเร็จแล้ว!");
+            liff.closeWindow();
+          })
+          .catch((err) => {
+            alert("❌ แชร์ไม่สำเร็จ: " + err.message);
+            console.error(err);
+          });
+      }
+    });
+  </script>
+</body>
+</html>
