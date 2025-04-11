@@ -26,14 +26,6 @@
       display: inline-block;
       margin-top: 20px;
     }
-    .error-message {
-      background-color: #f44336;
-      color: white;
-      padding: 20px;
-      border-radius: 8px;
-      font-size: 18px;
-      margin-top: 20px;
-    }
     .success-icon {
       font-size: 30px;
       margin-right: 10px;
@@ -84,20 +76,68 @@
           layout: "vertical",
           contents: [
             {
-              type: "image",
-              url: "https://img5.pic.in.th/file/secure-sv1/w13b16683eb845d5ce.png",
-              aspectRatio: "129:79",
-              aspectMode: "fit",
+              type: "box",
+              layout: "vertical",
+              contents: [
+                {
+                  type: "image",
+                  url: "https://img5.pic.in.th/file/secure-sv1/w13b16683eb845d5ce.png",
+                  aspectRatio: "129:79",
+                  aspectMode: "fit",
+                  backgroundColor: "#b3baff",
+                  size: "100%",
+                  action: {
+                    type: "uri",
+                    label: "อ่านเลย",
+                    uri: "https://elibrary-afapslib.cu-elibrary.com/"
+                  }
+                },
+                {
+                  type: "box",
+                  layout: "horizontal",
+                  contents: [
+                    {
+                      type: "image",
+                      url: "https://img2.pic.in.th/pic/-643-x-80-px.png",
+                      action: {
+                        type: "uri",
+                        label: "action",
+                        uri: "https://sites.google.com/view/libraryafaps"
+                      },
+                      aspectRatio: "8:1",
+                      aspectMode: "fit",
+                      size: "full"
+                    },
+                    {
+                      type: "separator"
+                    },
+                    {
+                      type: "image",
+                      url: "https://img5.pic.in.th/file/secure-sv1/-643-x-80-px-1.png",
+                      aspectRatio: "8:1",
+                      action: {
+                        type: "uri",
+                        label: "action",
+                        uri: "https://liff.line.me/2007236505-N3aoxxJp"
+                      },
+                      align: "center",
+                      size: "full"
+                    }
+                  ],
+                  justifyContent: "center"
+                }
+              ],
               backgroundColor: "#b3baff",
-              size: "100%",
-              action: {
-                type: "uri",
-                label: "อ่านเลย",
-                uri: "https://elibrary-afapslib.cu-elibrary.com/"
-              }
+              paddingAll: "none",
+              borderColor: "#b3baff"
             }
           ],
-          backgroundColor: "#b3baff"
+          backgroundColor: "#b3baff",
+          action: {
+            type: "uri",
+            label: "action",
+            uri: "https://elibrary-afapslib.cu-elibrary.com/"
+          }
         },
         body: {
           type: "box",
@@ -150,8 +190,7 @@
                   align: "center"
                 }
               ],
-              justifyContent: "center",
-              offsetBottom: "xs"
+              justifyContent: "center"
             }
           ],
           background: {
@@ -172,15 +211,16 @@
               gravity: "center",
               aspectMode: "cover",
               aspectRatio: "1080:50",
-              size: "full",
               action: {
                 type: "uri",
                 label: "shared",
                 uri: "https://liff.line.me/2007236505-N3aoxxJp"
-              }
+              },
+              size: "full"
             }
           ],
-          paddingAll: "none"
+          paddingAll: "none",
+          spacing: "md"
         }
       }
     };
@@ -193,33 +233,26 @@
       } else {
         liff.shareTargetPicker([flexMessage])
           .then(() => {
-            console.log("แชร์สำเร็จ");
-            document.body.innerHTML = `
+            const successHTML = `
               <div class="success-message">
                 <span class="success-icon">✅</span>
                 แชร์สำเร็จแล้ว!
               </div>
               <a href="javascript:window.close();" class="close-btn">ปิดหน้าต่าง</a>
             `;
+            document.body.innerHTML = successHTML;
           })
           .catch((err) => {
-            console.error("เกิดข้อผิดพลาด", err);
-            document.body.innerHTML = `
-              <div class="error-message">
+            const errorHTML = `
+              <div class="success-message" style="background-color: #f44336;">
                 <span class="success-icon">❌</span>
                 แชร์ไม่สำเร็จ: ${err.message}
               </div>
               <a href="javascript:window.close();" class="close-btn">ปิดหน้าต่าง</a>
             `;
+            document.body.innerHTML = errorHTML;
           });
       }
-    }).catch((err) => {
-      console.error("LIFF init ผิดพลาด:", err);
-      document.body.innerHTML = `
-        <div class="error-message">
-          ไม่สามารถโหลด LIFF ได้: ${err.message}
-        </div>
-      `;
     });
   </script>
 </body>
