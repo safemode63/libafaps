@@ -50,196 +50,158 @@
 
   <script>
     const flexMessage = {
-      type: "flex",
-      altText: "📚 ห้องสมุดขออนุญาต ประชาสัมพันธ์การใช้งาน E-Book",
-      contents: {
-        "type": "bubble",
-        "size": "giga",
-        "header": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "image",
-              "url": "https://img2.pic.in.th/pic/head5.png",
-              "aspectRatio": "7:1",
-              "align": "center",
-              "gravity": "center",
-              "aspectMode": "cover",
-              "size": "full"
-            }
-          ],
-          "paddingAll": "none"
-        },
-        "hero": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://img5.pic.in.th/file/secure-sv1/w13b16683eb845d5ce.png",
-                  "aspectRatio": "129:79",
-                  "aspectMode": "fit",
-                  "backgroundColor": "#b3baff",
-                  "size": "100%",
-                  "action": {
-                    "type": "uri",
-                    "label": "อ่านเลย",
-                    "uri": "https://elibrary-afapslib.cu-elibrary.com/"
-                  }
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "url": "https://img2.pic.in.th/pic/-643-x-80-px.png",
-                      "action": {
-                        "type": "uri",
-                        "label": "action",
-                        "uri": "https://sites.google.com/view/libraryafaps"
-                      },
-                      "aspectRatio": "8:1",
-                      "margin": "none",
-                      "aspectMode": "fit",
-                      "size": "full"
-                    },
-                    {
-                      "type": "separator"
-                    },
-                    {
-                      "type": "image",
-                      "url": "https://img5.pic.in.th/file/secure-sv1/-643-x-80-px-1.png",
-                      "aspectRatio": "8:1",
-                      "action": {
-                        "type": "uri",
-                        "label": "action",
-                        "uri": "https://liff.line.me/2007236505-N3aoxxJp"
-                      },
-                      "align": "center",
-                      "size": "full"
-                    }
-                  ],
-                  "justifyContent": "center"
-                }
-              ],
-              "backgroundColor": "#b3baff",
-              "paddingAll": "none",
-              "borderColor": "#b3baff",
-              "borderWidth": "none"
-            }
-          ],
-          "backgroundColor": "#b3baff",
-          "borderWidth": "none",
-          "action": {
-            "type": "uri",
-            "label": "action",
-            "uri": "https://elibrary-afapslib.cu-elibrary.com/"
-          },
-          "maxHeight": "100%"
-        },
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/appstore.png",
-                  "size": "md",
-                  "action": {
-                    "type": "uri",
-                    "label": "action",
-                    "uri": "https://apps.apple.com/th/app/cu-e-library/id1607050195?l=th"
-                  },
-                  "align": "center",
-                  "aspectRatio": "9:3"
-                },
-                {
-                  "type": "separator"
-                },
-                {
-                  "type": "image",
-                  "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/manual.png",
-                  "size": "md",
-                  "aspectRatio": "9:3",
-                  "action": {
-                    "type": "uri",
-                    "label": "action",
-                    "uri": "https://youtu.be/7We_KwOb1lw"
-                  },
-                  "align": "center"
-                },
-                {
-                  "type": "separator"
-                },
-                {
-                  "type": "image",
-                  "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/googleplay.png",
-                  "size": "md",
-                  "aspectRatio": "9:3",
-                  "action": {
-                    "type": "uri",
-                    "label": "action",
-                    "uri": "https://play.google.com/store/apps/details?id=hti.cu.elibrary.android&pcampaignid=web_share"
-                  },
-                  "align": "center"
-                }
-              ],
-              "justifyContent": "center",
-              "offsetBottom": "xs"
-            }
-          ],
-          "background": {
-            "type": "linearGradient",
-            "startColor": "#5656c7",
-            "endColor": "#b3baff",
-            "angle": "0deg"
+  type: "flex",
+  altText: "📚 ห้องสมุดขออนุญาต ประชาสัมพันธ์การใช้งาน E-Book",
+  contents: {
+    type: "bubble",
+    size: "giga",
+    header: {
+      type: "box",
+      layout: "vertical",
+      contents: [
+        {
+          type: "image",
+          url: "https://img2.pic.in.th/pic/head5.png",
+          aspectMode: "cover",
+          size: "full",
+          align: "center",
+          gravity: "center"
+        }
+      ],
+      paddingAll: "none"
+    },
+    hero: {
+      type: "box",
+      layout: "vertical",
+      contents: [
+        {
+          type: "image",
+          url: "https://img5.pic.in.th/file/secure-sv1/w13b16683eb845d5ce.png",
+          aspectMode: "cover",
+          size: "full",
+          align: "center",
+          action: {
+            type: "uri",
+            label: "อ่านเลย",
+            uri: "https://elibrary-afapslib.cu-elibrary.com/"
           }
         },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
+        {
+          type: "box",
+          layout: "horizontal",
+          contents: [
             {
-              "type": "image",
-              "url": "https://img5.pic.in.th/file/secure-sv1/footer2.jpg",
-              "align": "center",
-              "gravity": "center",
-              "aspectMode": "cover",
-              "aspectRatio": "1080:50",
-              "offsetTop": "0px",
-              "action": {
-                "type": "uri",
-                "label": "shared",
-                "uri": "https://liff.line.me/2007236505-N3aoxxJp"
-              },
-              "size": "full"
+              type: "image",
+              url: "https://img2.pic.in.th/pic/-643-x-80-px.png",
+              aspectMode: "cover",
+              size: "full",
+              align: "center",
+              action: {
+                type: "uri",
+                label: "action",
+                uri: "https://sites.google.com/view/libraryafaps"
+              }
+            },
+            {
+              type: "image",
+              url: "https://img5.pic.in.th/file/secure-sv1/-643-x-80-px-1.png",
+              aspectMode: "cover",
+              size: "full",
+              align: "center",
+              action: {
+                type: "uri",
+                label: "action",
+                uri: "https://liff.line.me/2007236505-N3aoxxJp"
+              }
             }
           ],
-          "paddingAll": "none",
-          "offsetTop": "none",
-          "offsetBottom": "none",
-          "paddingTop": "none",
-          "paddingStart": "none",
-          "paddingEnd": "none",
-          "paddingBottom": "none",
-          "offsetEnd": "none",
-          "offsetStart": "none",
-          "cornerRadius": "none",
-          "borderWidth": "none",
-          "spacing": "md"
+          justifyContent: "center",
+          spacing: "sm"
         }
-      }
-    };
+      ],
+      backgroundColor: "#b3baff",
+      paddingAll: "none"
+    },
+    body: {
+      type: "box",
+      layout: "vertical",
+      contents: [
+        {
+          type: "box",
+          layout: "horizontal",
+          contents: [
+            {
+              type: "image",
+              url: "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/appstore.png",
+              size: "sm",
+              aspectMode: "fit",
+              align: "center",
+              action: {
+                type: "uri",
+                label: "App Store",
+                uri: "https://apps.apple.com/th/app/cu-e-library/id1607050195?l=th"
+              }
+            },
+            {
+              type: "image",
+              url: "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/manual.png",
+              size: "sm",
+              aspectMode: "fit",
+              align: "center",
+              action: {
+                type: "uri",
+                label: "คู่มือ",
+                uri: "https://youtu.be/7We_KwOb1lw"
+              }
+            },
+            {
+              type: "image",
+              url: "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/googleplay.png",
+              size: "sm",
+              aspectMode: "fit",
+              align: "center",
+              action: {
+                type: "uri",
+                label: "Google Play",
+                uri: "https://play.google.com/store/apps/details?id=hti.cu.elibrary.android&pcampaignid=web_share"
+              }
+            }
+          ],
+          justifyContent: "center",
+          spacing: "md",
+          margin: "md"
+        }
+      ],
+      background: {
+        type: "linearGradient",
+        angle: "0deg",
+        startColor: "#5656c7",
+        endColor: "#b3baff"
+      },
+      paddingAll: "md"
+    },
+    footer: {
+      type: "box",
+      layout: "vertical",
+      contents: [
+        {
+          type: "image",
+          url: "https://img5.pic.in.th/file/secure-sv1/footer2.jpg",
+          size: "full",
+          aspectMode: "cover",
+          align: "center",
+          gravity: "center",
+          action: {
+            type: "uri",
+            label: "shared",
+            uri: "https://liff.line.me/2007236505-N3aoxxJp"
+          }
+        }
+      ],
+      paddingAll: "none"
+    }
+  }
+};
 
     const LIFF_ID = "2007236505-N3aoxxJp";
 
