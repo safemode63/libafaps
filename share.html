@@ -26,6 +26,14 @@
       display: inline-block;
       margin-top: 20px;
     }
+    .error-message {
+      background-color: #f44336;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      margin-top: 20px;
+    }
     .success-icon {
       font-size: 30px;
       margin-right: 10px;
@@ -50,203 +58,132 @@
 
   <script>
     const flexMessage = {
-  type: "flex",
-  altText: "📚 ห้องสมุดขออนุญาต ประชาสัมพันธ์การใช้งาน E-Book",
-  contents: {
-  "type": "bubble",
-  "size": "giga",
-  "header": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "image",
-        "url": "https://img2.pic.in.th/pic/head5.png",
-        "aspectRatio": "7:1",
-        "align": "center",
-        "gravity": "center",
-        "aspectMode": "cover",
-        "size": "full",
-        "animated": true
-      }
-    ],
-    "paddingAll": "none"
-  },
-  "hero": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "image",
-            "url": "https://img5.pic.in.th/file/secure-sv1/w13b16683eb845d5ce.png",
-            "aspectRatio": "129:79",
-            "aspectMode": "fit",
-            "backgroundColor": "#b3baff",
-            "size": "100%",
-            "action": {
-              "type": "uri",
-              "label": "อ่านเลย",
-              "uri": "https://elibrary-afapslib.cu-elibrary.com/"
-            },
-            "animated": true
-          },
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "image",
-                "url": "https://img2.pic.in.th/pic/-643-x-80-px.png",
-                "action": {
-                  "type": "uri",
-                  "label": "action",
-                  "uri": "https://sites.google.com/view/libraryafaps"
-                },
-                "aspectRatio": "8:1",
-                "margin": "none",
-                "aspectMode": "fit",
-                "size": "full",
-                "animated": true
-              },
-              {
-                "type": "separator"
-              },
-              {
-                "type": "image",
-                "url": "https://img5.pic.in.th/file/secure-sv1/-643-x-80-px-1.png",
-                "aspectRatio": "8:1",
-                "action": {
-                  "type": "uri",
-                  "label": "action",
-                  "uri": "https://liff.line.me/2007236505-N3aoxxJp"
-                },
-                "align": "center",
-                "size": "full",
-                "animated": true
-              }
-            ],
-            "justifyContent": "center"
-          }
-        ],
-        "backgroundColor": "#b3baff",
-        "paddingAll": "none",
-        "borderColor": "#b3baff",
-        "borderWidth": "none"
-      }
-    ],
-    "backgroundColor": "#b3baff",
-    "borderWidth": "none",
-    "action": {
-      "type": "uri",
-      "label": "action",
-      "uri": "https://elibrary-afapslib.cu-elibrary.com/"
-    },
-    "maxHeight": "100%"
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "image",
-            "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/appstore.png",
-            "size": "md",
-            "action": {
-              "type": "uri",
-              "label": "action",
-              "uri": "https://apps.apple.com/th/app/cu-e-library/id1607050195?l=th"
-            },
-            "align": "center",
-            "aspectRatio": "9:3",
-            "animated": true
-          },
-          {
-            "type": "separator"
-          },
-          {
-            "type": "image",
-            "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/manual.png",
-            "size": "md",
-            "aspectRatio": "9:3",
-            "action": {
-              "type": "uri",
-              "label": "action",
-              "uri": "https://youtu.be/7We_KwOb1lw"
-            },
-            "align": "center",
-            "animated": true
-          },
-          {
-            "type": "separator"
-          },
-          {
-            "type": "image",
-            "url": "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/googleplay.png",
-            "size": "md",
-            "aspectRatio": "9:3",
-            "action": {
-              "type": "uri",
-              "label": "action",
-              "uri": "https://play.google.com/store/apps/details?id=hti.cu.elibrary.android&pcampaignid=web_share"
-            },
-            "align": "center",
-            "animated": true
-          }
-        ],
-        "justifyContent": "center",
-        "offsetBottom": "xs"
-      }
-    ],
-    "background": {
-      "type": "linearGradient",
-      "startColor": "#5656c7",
-      "endColor": "#b3baff",
-      "angle": "0deg"
-    }
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "image",
-        "url": "https://img5.pic.in.th/file/secure-sv1/footer2.jpg",
-        "align": "center",
-        "gravity": "center",
-        "aspectMode": "cover",
-        "aspectRatio": "1080:50",
-        "offsetTop": "0px",
-        "action": {
-          "type": "uri",
-          "label": "shared",
-          "uri": "https://liff.line.me/2007236505-N3aoxxJp"
+      type: "flex",
+      altText: "📚 ห้องสมุดขออนุญาต ประชาสัมพันธ์การใช้งาน E-Book",
+      contents: {
+        type: "bubble",
+        size: "giga",
+        header: {
+          type: "box",
+          layout: "vertical",
+          contents: [
+            {
+              type: "image",
+              url: "https://img2.pic.in.th/pic/head5.png",
+              aspectRatio: "7:1",
+              align: "center",
+              gravity: "center",
+              aspectMode: "cover",
+              size: "full"
+            }
+          ],
+          paddingAll: "none"
         },
-        "size": "full",
-        "animated": true
+        hero: {
+          type: "box",
+          layout: "vertical",
+          contents: [
+            {
+              type: "image",
+              url: "https://img5.pic.in.th/file/secure-sv1/w13b16683eb845d5ce.png",
+              aspectRatio: "129:79",
+              aspectMode: "fit",
+              backgroundColor: "#b3baff",
+              size: "100%",
+              action: {
+                type: "uri",
+                label: "อ่านเลย",
+                uri: "https://elibrary-afapslib.cu-elibrary.com/"
+              }
+            }
+          ],
+          backgroundColor: "#b3baff"
+        },
+        body: {
+          type: "box",
+          layout: "vertical",
+          contents: [
+            {
+              type: "box",
+              layout: "horizontal",
+              contents: [
+                {
+                  type: "image",
+                  url: "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/appstore.png",
+                  size: "md",
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: "https://apps.apple.com/th/app/cu-e-library/id1607050195?l=th"
+                  },
+                  align: "center",
+                  aspectRatio: "9:3"
+                },
+                {
+                  type: "separator"
+                },
+                {
+                  type: "image",
+                  url: "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/manual.png",
+                  size: "md",
+                  aspectRatio: "9:3",
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: "https://youtu.be/7We_KwOb1lw"
+                  },
+                  align: "center"
+                },
+                {
+                  type: "separator"
+                },
+                {
+                  type: "image",
+                  url: "https://www.afaps.ac.th/subdomain/sed/gallery/picfram/googleplay.png",
+                  size: "md",
+                  aspectRatio: "9:3",
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: "https://play.google.com/store/apps/details?id=hti.cu.elibrary.android&pcampaignid=web_share"
+                  },
+                  align: "center"
+                }
+              ],
+              justifyContent: "center",
+              offsetBottom: "xs"
+            }
+          ],
+          background: {
+            type: "linearGradient",
+            startColor: "#5656c7",
+            endColor: "#b3baff",
+            angle: "0deg"
+          }
+        },
+        footer: {
+          type: "box",
+          layout: "vertical",
+          contents: [
+            {
+              type: "image",
+              url: "https://img5.pic.in.th/file/secure-sv1/footer2.jpg",
+              align: "center",
+              gravity: "center",
+              aspectMode: "cover",
+              aspectRatio: "1080:50",
+              size: "full",
+              action: {
+                type: "uri",
+                label: "shared",
+                uri: "https://liff.line.me/2007236505-N3aoxxJp"
+              }
+            }
+          ],
+          paddingAll: "none"
+        }
       }
-    ],
-    "paddingAll": "none",
-    "offsetTop": "none",
-    "offsetBottom": "none",
-    "paddingTop": "none",
-    "paddingStart": "none",
-    "paddingEnd": "none",
-    "paddingBottom": "none",
-    "offsetEnd": "none",
-    "offsetStart": "none",
-    "cornerRadius": "none",
-    "borderWidth": "none",
-    "spacing": "md"
-  }
-};
+    };
 
     const LIFF_ID = "2007236505-N3aoxxJp";
 
@@ -256,27 +193,33 @@
       } else {
         liff.shareTargetPicker([flexMessage])
           .then(() => {
-            // เมื่อแชร์สำเร็จ
-            const successMessage = 
+            console.log("แชร์สำเร็จ");
+            document.body.innerHTML = `
               <div class="success-message">
                 <span class="success-icon">✅</span>
                 แชร์สำเร็จแล้ว!
               </div>
               <a href="javascript:window.close();" class="close-btn">ปิดหน้าต่าง</a>
-            ;
-            document.body.innerHTML = successMessage;
+            `;
           })
           .catch((err) => {
-            const errorMessage = 
-              <div class="success-message" style="background-color: #f44336;">
+            console.error("เกิดข้อผิดพลาด", err);
+            document.body.innerHTML = `
+              <div class="error-message">
                 <span class="success-icon">❌</span>
                 แชร์ไม่สำเร็จ: ${err.message}
               </div>
               <a href="javascript:window.close();" class="close-btn">ปิดหน้าต่าง</a>
-            ;
-            document.body.innerHTML = errorMessage;
+            `;
           });
       }
+    }).catch((err) => {
+      console.error("LIFF init ผิดพลาด:", err);
+      document.body.innerHTML = `
+        <div class="error-message">
+          ไม่สามารถโหลด LIFF ได้: ${err.message}
+        </div>
+      `;
     });
   </script>
 </body>
