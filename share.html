@@ -61,4 +61,23 @@
       }
 
       if (!liff.isInClient()) {
-        document.getElementById("status").inner
+        document.getElementById("status").innerText = "⚠️ กรุณาเปิดจากในแอป LINE เท่านั้น";
+        return;
+      }
+
+      liff.shareTargetPicker([flexMessage])
+        .then(() => {
+          document.getElementById("status").innerText = "✅ แชร์สำเร็จแล้ว!";
+          liff.closeWindow();
+        })
+        .catch((err) => {
+          document.getElementById("status").innerText = "❌ แชร์ไม่สำเร็จ: " + err.message;
+          console.error(err);
+        });
+    }).catch((err) => {
+      document.getElementById("status").innerText = "❌ โหลด LIFF ไม่สำเร็จ: " + err.message;
+      console.error(err);
+    });
+  </script>
+</body>
+</html>
