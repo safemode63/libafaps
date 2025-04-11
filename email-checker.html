@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ตรวจสอบ E-mail</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #resultBox {
+      margin-top: 20px;
+      padding: 15px;
+      display: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>ตรวจสอบ E-mail</h2>
+    <input id="emailInput" type="email" placeholder="กรอก E-mail ของคุณ" />
+    <button onclick="checkEmail()">ตรวจสอบ</button>
+    <div id="resultBox"></div>
+  </div>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzkIptk6UBJhRR82DlQeL-7cVP6FT4a1UpwG9npRdK9P6xWZJoP0GhP9xn8hgE1Ix8n/exec";
+
+    function checkEmail() {
+      const email = document.getElementById("emailInput").value.trim();
+      const resultBox = document.getElementById("resultBox");
+
+      if (!email) {
+        showResult("กรุณากรอก E-mail ก่อนนะครับ", "#fff3cd", "#856404", "#ffeeba");
+        return;
+      }
+
+      fetch(`${scriptURL}?email=${encodeURIComponent(email)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.valid) {
+            showResult(`✅ <strong>E-mail:</strong> ${data.email} <br><strong>Password:</strong> ${data.password}`, "#d4edda", "#155724", "#c3e6cb");
+          } else {
+            showResult("❌ E-mail ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง", "#f8d7da", "#721c24", "#f5c6cb");
+          }
+        })
+        .catch(err => {
+          console.error("ERROR:", err);
+          showResult("เกิดข้อผิดพลาดในการเชื่อมต่อ", "#f8d7da", "#721c24", "#f5c6cb");
+        });
+    }
+
+    function showResult(message, bg, color, border) {
+      const box = document.getElementById("resultBox");
+      box.innerHTML = message;
+      box.style.backgroundColor = bg;
+      box.style.color = color;
+      box.style.border = `1px solid ${border}`;
+      box.style.display = "block";
+    }
+  </script>
+</body>
+</html>
