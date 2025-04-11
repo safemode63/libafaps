@@ -1,83 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>แชร์ Flex Message</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    #status {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <h2 id="status">กำลังเตรียมแชร์ข้อความ...</h2>
+  <h2>📤 กำลังเตรียมแชร์ข้อความ...</h2>
+  <div id="status">กรุณารอสักครู่</div>
 
   <script>
     const LIFF_ID = "2007236505-N3aoxxJp";
-    document.getElementById("status").innerText = "🔄 กำลังโหลด LIFF...";
 
     const flexMessage = {
       type: "flex",
-      altText: "📚 ห้องสมุดขออนุญาต ประชาสัมพันธ์การใช้งาน E-Book",
+      altText: "📚 ห้องสมุดขออนุญาตประชาสัมพันธ์การใช้งาน E-Book",
       contents: {
         type: "bubble",
-        hero: {
-          type: "image",
-          url: "https://img2.pic.in.th/pic/head5.png",
-          size: "full",
-          aspectRatio: "16:9",
-          aspectMode: "cover"
-        },
         body: {
           type: "box",
           layout: "vertical",
           contents: [
             {
               type: "text",
-              text: "กดเพื่ออ่านหนังสือ E-Book ได้เลย 📖",
+              text: "✅ ลิงก์ E-Book สำหรับนักเรียน",
+              size: "lg",
+              weight: "bold",
               wrap: true
-            }
-          ]
-        },
-        footer: {
-          type: "box",
-          layout: "vertical",
-          contents: [
+            },
             {
               type: "button",
               action: {
                 type: "uri",
-                label: "เข้าเว็บไซต์",
+                label: "📖 อ่านเลย",
                 uri: "https://elibrary-afapslib.cu-elibrary.com/"
               },
-              style: "primary"
+              style: "primary",
+              margin: "md"
+            },
+            {
+              type: "button",
+              action: {
+                type: "uri",
+                label: "🔁 แชร์ต่อ",
+                uri: "https://liff.line.me/2007236505-N3aoxxJp"
+              },
+              style: "secondary",
+              margin: "sm"
             }
           ]
         }
       }
     };
 
-    liff.init({ liffId: LIFF_ID }).then(() => {
-      if (!liff.isLoggedIn()) {
-        liff.login();
-        return;
-      }
+    async function main() {
+      try {
+        await liff.init({ liffId: LIFF_ID });
+        console.log("✅ LIFF init success");
 
-      if (!liff.isInClient()) {
-        document.getElementById("status").innerText = "⚠️ กรุณาเปิดจากในแอป LINE เท่านั้น";
-        return;
-      }
+        if (!liff.isLoggedIn()) {
+          document.getElementById("status").innerText = "🔐 ยังไม่ล็อกอิน... กำลังเข้าสู่ระบบ";
+          liff.login();
+          return;
+        }
 
-      liff.shareTargetPicker([flexMessage])
-        .then(() => {
-          document.getElementById("status").innerText = "✅ แชร์สำเร็จแล้ว!";
-          liff.closeWindow();
-        })
-        .catch((err) => {
-          document.getElementById("status").innerText = "❌ แชร์ไม่สำเร็จ: " + err.message;
-          console.error(err);
-        });
-    }).catch((err) => {
-      document.getElementById("status").innerText = "❌ โหลด LIFF ไม่สำเร็จ: " + err.message;
-      console.error(err);
-    });
+        if (!liff.isInClient()) {
+          document.getElementById("status").innerText = "⚠️ กรุณาเปิดลิงก์นี้จากในแอป LINE เท่านั้น";
+          return;
+        }
+
+        document.getElementById("status").innerText = "📤 กำลังแชร์...";
+
+        await liff.shareTargetPicker([flexMessage]);
+
+        document.getElementById("status").innerText = "✅ แชร์สำเร็จแล้ว!";
+        setTimeout(() => liff.closeWindow(), 1500);
+      } catch (err) {
+        console.error("❌ Error:", err);
+        document.getElementById("status").innerText = "❌ แชร์ไม่สำเร็จ: " + err.message;
+      }
+    }
+
+    main();
   </script>
 </body>
 </html>
