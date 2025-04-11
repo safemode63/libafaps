@@ -82,7 +82,7 @@
         "contents": [
           {
             "type": "image",
-            "url": "https://img5.pic.in.th/file/secure-sv1/E-BOOK-12.gif",
+            "url": "https://img5.pic.in.th/file/secure-sv1/w13b16683eb845d5ce.png",
             "aspectRatio": "129:79",
             "aspectMode": "fit",
             "backgroundColor": "#b3baff",
@@ -257,23 +257,23 @@
         liff.shareTargetPicker([flexMessage])
           .then(() => {
             // เมื่อแชร์สำเร็จ
-            const successMessage = `
+            const successMessage = 
               <div class="success-message">
                 <span class="success-icon">✅</span>
                 แชร์สำเร็จแล้ว!
               </div>
               <a href="javascript:window.close();" class="close-btn">ปิดหน้าต่าง</a>
-            `;
+            ;
             document.body.innerHTML = successMessage;
           })
           .catch((err) => {
-            const errorMessage = `
+            const errorMessage = 
               <div class="success-message" style="background-color: #f44336;">
                 <span class="success-icon">❌</span>
                 แชร์ไม่สำเร็จ: ${err.message}
               </div>
               <a href="javascript:window.close();" class="close-btn">ปิดหน้าต่าง</a>
-            `;
+            ;
             document.body.innerHTML = errorMessage;
           });
       }
